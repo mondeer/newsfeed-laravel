@@ -8,7 +8,7 @@ Route::get('/newblog', 'BlogCtrl@create');
 
 Route::post('/newblog', 'BlogCtrl@postCreate');
 
-Route::get('/viewblog/{id}', array('as'=>'viewblog', 'uses'=>'BlogCtrl@showblog'));
+Route::get('/viewblog/{slug}', array('as'=>'viewblog', 'uses'=>'BlogCtrl@showblog'));
 
 Auth::routes();
 

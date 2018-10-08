@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NewsFeed</title>
+    <title>South Sudan || NewsFeed</title>
+    <meta name="description" content="Malual newsfeed, south sudan nation news, written by Malual">
+    <meta name="keywords" content="south sudan news, breaking news south sudan, south sudan now">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,20 +29,20 @@
         <div class="header_top">
           <div class="header_top_left">
             <ul class="top_nav">
-              <li><a href="index.html">Home</a></li>
+              <li><a href="/">Home</a></li>
               <li><a href="#">About</a></li>
-              <li><a href="pages/contact.html">Contact</a></li>
+              <li><a href="#">Contact</a></li>
             </ul>
           </div>
           <div class="header_top_right">
-            <p>Friday, December 05, 2045</p>
+            <p>Today: {{ Carbon\Carbon::now()->format('l j F Y')}}</p>
           </div>
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
           <div class="logo_area"><a href="index.html" class="logo"><img src="images/logo.jpg" alt=""></a></div>
-          <div class="add_banner"><a href="#"><img src="images/addbanner_728x90_V1.jpg" alt=""></a></div>
+          <div class="add_banner"><a href="#"><img src="images/banner.png" alt=""></a></div>
         </div>
       </div>
     </div>
@@ -53,20 +55,20 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
           <li class="active"><a href="index.html"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
-          <li><a href="#">Technology</a></li>
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile</a>
+          <li><a href="#">Breaking News</a></li>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Politics</a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Android</a></li>
-              <li><a href="#">Samsung</a></li>
-              <li><a href="#">Nokia</a></li>
-              <li><a href="#">Walton Mobile</a></li>
-              <li><a href="#">Sympony</a></li>
+              @foreach ($blogs as $blog)
+                <li><a href="#">{{$blog->category}}</a></li>
+              @endforeach
+              <li><a href="#">South Sudan</a></li>
+              <li><a href="#">East Africa</a></li>
+              <li><a href="#">International</a></li>
             </ul>
           </li>
-          <li><a href="#">Laptops</a></li>
-          <li><a href="#">Tablets</a></li>
-          <li><a href="pages/contact.html">Contact Us</a></li>
-          <li><a href="pages/404.html">404 Page</a></li>
+          <li><a href="#">Sports</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Contact Us</a></li>
         </ul>
       </div>
     </nav>
@@ -76,15 +78,9 @@
       <div class="col-lg-12 col-md-12">
         <div class="latest_newsarea"> <span>Latest News</span>
           <ul id="ticker01" class="news_sticker">
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My First News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My Second News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My Third News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My Four News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My Five News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My Six News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My Seven News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">My Eight News Item</a></li>
-            <li><a href="#"><img src="images/news_thumbnail2.jpg" alt="">My Nine News Item</a></li>
+            @foreach ($blogs as $blog)
+              <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">{{ $blog->title }}</a></li>
+            @endforeach
           </ul>
           <div class="social_area">
             <ul class="social_nav">
@@ -106,30 +102,16 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
-          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img4.jpg" alt=""></a>
-            <div class="slider_article">
-              <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
+
+          @foreach ($blogs as $blog)
+            <div class="single_iteam"> <a href="#"> <img src="images/bg.jpg" alt="images/bg.jpg"></a>
+              <div class="slider_article">
+                <h2><a class="slider_tittle" href="/viewblog/{{$blog->slug}}">{{ $blog->title }}</a></h2>
+                <p>{!! str_limit($blog->content, $limit = 350, $end = "...") !!}</p>
+              </div>
             </div>
-          </div>
-          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img2.jpg" alt=""></a>
-            <div class="slider_article">
-              <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
-            </div>
-          </div>
-          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img3.jpg" alt=""></a>
-            <div class="slider_article">
-              <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
-            </div>
-          </div>
-          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img1.jpg" alt=""></a>
-            <div class="slider_article">
-              <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
-            </div>
-          </div>
+          @endforeach
+
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
@@ -138,31 +120,14 @@
           <div class="latest_post_container">
             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
             <ul class="latest_postnav">
-              <li>
-                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                </div>
-              </li>
+              @foreach ($blogs as $blog)
+                <li>
+                  <div class="media"> <a href="/viewblog/{{ $blog->slug }}" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
+                    <div class="media-body"> <a href="/viewblog/{{ $blog->slug }}" class="catg_title"> {{$blog->title }}</a> </div>
+                  </div>
+                </li>
+              @endforeach
+
             </ul>
             <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
           </div>

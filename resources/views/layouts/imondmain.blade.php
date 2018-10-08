@@ -9,14 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- SEO -->
-    <meta name="description" content="150 words">
+    <title>South Sudan || NewsFeed</title>
+    <meta name="description" content="Malual newsfeed, south sudan nation news, written by Malual">
+    <meta name="keywords" content="south sudan news, breaking news south sudan, south sudan now">
     <meta name="author" content="Mondia Kering">
     <meta name="url" content="http://www.imond.co.ke">
     <meta name="copyright" content="iMond Solutions">
     <meta name="robots" content="index,follow">
-
-
-    <title>iMond || DevBlog</title>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="images/favicon/apple-touch-icon.png">

@@ -5,6 +5,7 @@ namespace imond\Http\Controllers;
 use Illuminate\Http\Request;
 use imond\Blog;
 use Auth;
+use Carbon\Carbon;
 
 class BlogCtrl extends Controller
 {
@@ -14,13 +15,22 @@ class BlogCtrl extends Controller
 
   public function postCreate(Request $request) {
     $author = Auth::user()->name;
+
+    $title_slug= str_slug($request->title, '-');
+    $slug = $title_slug.'-'.Carbon::today()->year.'-'.Carbon::today()->month.'-'.Carbon::today()->day;
+
     $blog = new Blog;
     $blog->title = $request->input('title');
+    $blog->featured_img = $request->input('featured_img');
     $blog->author = $author;
+    $blog->category = $request->input('category');
     $blog->content = $request->input('content');
+    $blog->meta_data = $request->input('meta_data');
+    $blog->slug = $slug;
+    $blog->published = $request->input('published');
     $blog->save();
 
-    return redirect('/viewblogs');
+    return redirect('/viewblog/'.$slug);
 
   }
 
@@ -30,10 +40,11 @@ class BlogCtrl extends Controller
   return view('home')->with('blogs', $blogs);
   }
 
-  public function showblog($id) {
-    $blog = Blog::FindOrFail($id);
+  public function showblog($slug='') {
+    $blog = Blog::where('slug', $slug)->first();
+    $blogs = Blog::all();
 
-    return view('viewblog', compact('blog'));
+    return view('viewblog', compact('blog', 'blogs'));
 
   }
 }

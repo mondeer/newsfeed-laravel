@@ -6,27 +6,23 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateBlogsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->longtext('featured_img')->nullable();
             $table->string('author');
-            $table->text('content');
+            $table->string('category');
+            $table->longtext('content');
+            $table->string('meta_data');
+            $table->string('slug')->unique();
+            $table->string('published')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('blogs');

@@ -1,31 +1,44 @@
-@extends('blog.index')
+@extends('admin.dashboard')
 
 @section ('content')
-<div class="row imondgray">
-  <div class="col-md-12">
-    <h1>Hi {{ Auth::user()->name }}, Create a new blog</h1>
-    <form class="form-horizontal" action="/newblog" method="post">
-      {{csrf_field()}}
+<div class="panel panel-primary">
+  <div class="panel-heading main-color-bg">
+    <h3 class="panel-title">Create NewsFeed</h3>
+  </div>
+  <div class="panel-body">
+    <form method="POST" action="/newblog">
+      {{ csrf_field() }}
       <div class="form-group">
-        <label class="col-sm-2 control-label">Title</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="title" placeholder="your title goes here {{Auth::user()->name}}" required>
-        </div>
+        <label class="text-success">NewsFeed Title</label>
+        <input type="text" name="title" class="form-control" placeholder="NewsFeed Title" value="{{ old('title') }}" required>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Question</label>
-        <div class="col-sm-10">
-          {{-- <iframe src="/laravel-filemanager" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe> --}}
-
-          <textarea id="message" class="editable medium-editor-textarea" rows="13" placeholder="{{Auth::user()->name}}, your content goes here, at the bottom right of this canvas, expand" name="content"></textarea>
-        </div>
+        <label class="text-success">NewsFeed Category</label>
+        <select class="control-label" name="category">
+          <option value="local">Local News</option>
+          <option value="africa">African News</option>
+          <option value="international">International News</option>
+        </select>
       </div>
       <div class="form-group">
-        <div class="subscribe-form margin-top-20">
-            <button class="load-more-button" type="submit">Submit</button>
-        </div>
+        <label class="text-success">Featured Image</label>
+        <input type="file" name="featured_img" placeholder="{{Auth::user()->name}}, Drag and drop your image here" required>
       </div>
-  </form>
-</div>
+      <div class="form-group">
+        <label class="text-success">The Feed</label>
+        <textarea id="message" name="content" rows="13" placeholder="{{Auth::user()->name}}, your content goes here, at the bottom right of this canvas, expand"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="text-success">Meta Data</label>
+        <input type="text" name="meta_data" class="form-control" placeholder="newsfeed meta data for Search engine optimization" required>
+      </div>
+      <div class="checkbox">
+        <label class="text-success">
+          <input type="checkbox" name="published" checked> Published
+        </label>
+      </div>
+      <input type="submit" class="btn btn-default" value="Submit">
+    </form>
+  </div>
 </div>
 @endsection
