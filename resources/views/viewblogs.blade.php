@@ -11,11 +11,11 @@
 
 
       <div class="col-md-12 content-page">
-        @if($blogs->count()==0)
-          <div class="post-info">
-            <h1>No Blogs</h1>
-          </div>
-        @endif
+          @if($blogs->count()==0)
+            <div class="post-info">
+              <h1>No Blogs</h1>
+            </div>
+          @endif
 
           <!-- Blog Post Start -->
           @foreach($blogs as $blog)

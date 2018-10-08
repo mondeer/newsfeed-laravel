@@ -6,7 +6,7 @@
     <h3 class="panel-title">Create NewsFeed</h3>
   </div>
   <div class="panel-body">
-    <form method="POST" action="/newblog">
+    <form method="POST" action="/newblog" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="form-group">
         <label class="text-success">NewsFeed Title</label>
@@ -22,7 +22,7 @@
       </div>
       <div class="form-group">
         <label class="text-success">Featured Image</label>
-        <input type="file" name="featured_img" placeholder="{{Auth::user()->name}}, Drag and drop your image here" required>
+        <input type="file" name="img" placeholder="{{Auth::user()->name}}, Drag and drop your image here" required>
       </div>
       <div class="form-group">
         <label class="text-success">The Feed</label>

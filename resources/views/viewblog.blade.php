@@ -30,7 +30,7 @@
                 <div class="media-body"> <a class="catg_title" href="single_page.html">{{ $related->title }}</a> </div>
               </div>
             </li>
-          @endforeachs
+          @endforeach
         </ul>
       </div>
     </div>

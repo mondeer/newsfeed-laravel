@@ -58,9 +58,6 @@
           <li><a href="#">Breaking News</a></li>
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Politics</a>
             <ul class="dropdown-menu" role="menu">
-              @foreach ($blogs as $blog)
-                <li><a href="#">{{$blog->category}}</a></li>
-              @endforeach
               <li><a href="#">South Sudan</a></li>
               <li><a href="#">East Africa</a></li>
               <li><a href="#">International</a></li>
