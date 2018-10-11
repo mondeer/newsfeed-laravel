@@ -37,10 +37,39 @@
           <div class="header_top_right">
             <p>Today: {{ Carbon\Carbon::now()->format('l j F Y')}}</p>
           </div>
+          <div id="example">
+
+          </div>
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
+          <!-- Button trigger modal -->
+          <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Launch demo modal
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                  <div style="text-align: left;">
+                    <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true"
+                    style="width:1000px; height:500px;" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="logo_area"><a href="index.html" class="logo"><img src="images/logo.jpg" alt=""></a></div>
           <div class="add_banner"><a href="#"><img src="images/banner.png" alt=""></a></div>
         </div>
@@ -78,7 +107,7 @@
       <div class="col-lg-12 col-md-12">
         <div class="latest_newsarea"> <span>Latest News</span>
           <ul id="ticker01" class="news_sticker">
-            @foreach ($blogs->slice(0,3) as $blog)
+            @foreach ($blogs as $blog)
               <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">{{ $blog->title }}</a></li>
             @endforeach
           </ul>
