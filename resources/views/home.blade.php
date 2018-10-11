@@ -78,7 +78,7 @@
       <div class="col-lg-12 col-md-12">
         <div class="latest_newsarea"> <span>Latest News</span>
           <ul id="ticker01" class="news_sticker">
-            @foreach ($blogs as $blog)
+            @foreach ($blogs->slice(0,3) as $blog)
               <li><a href="#"><img src="images/news_thumbnail3.jpg" alt="">{{ $blog->title }}</a></li>
             @endforeach
           </ul>
@@ -103,8 +103,8 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
 
-          @foreach ($blogs as $blog)
-            <div class="single_iteam"> <a href="#"> <img src="images/bg.jpg" alt="images/bg.jpg"></a>
+          @foreach ($blogs->slice(0,3) as $blog)
+            <div class="single_iteam"> <a href="#"> <img src="/featured/{{ $blog->featured_img }}" alt="images/bg.jpg"></a>
               <div class="slider_article">
                 <h2><a class="slider_tittle" href="/viewblog/{{$blog->slug}}">{{ $blog->title }}</a></h2>
                 <p>{!! str_limit($blog->content, $limit = 350, $end = "...") !!}</p>
@@ -431,6 +431,9 @@
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInLeftBig">
             <h2>Images</h2>
+            @foreach ($blogs as $image)
+              <img src="/featured/{{ $blog->featured_img }}" alt="">
+            @endforeach
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
