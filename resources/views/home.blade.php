@@ -103,7 +103,7 @@
             <div class="single_iteam"> <a href="/viewblog/{{ $blog->slug }}"> <img src="/featured/{{ $blog->featured_img }}"></a>
               <div class="slider_article">
                 <h2><a class="slider_tittle" href="/viewblog/{{ $blog->slug }}">{{ $blog->title }}</a></h2>
-                <p>{!! str_limit($blog->content, $limit = 150, $end = "...") !!}</p>
+                {{-- <p>{!! str_limit($blog->content, $limit = 150, $end = "...") !!}</p> --}}
               </div>
             </div>
           @endforeach
@@ -137,36 +137,25 @@
             <h2><span>Business</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
-                <li>
-                  <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="images/featured_img1.jpg"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                  </figure>
-                </li>
+                @foreach ($business as $biz)
+                  <li>
+                    <figure class="bsbig_fig"> <a href="/viewblog/{{$biz->slug}}" class="featured_img"> <img alt="" src="/featured/{{$biz->featured_img}}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="pages/single_page.html">{{$biz->title}}</a> </figcaption>
+                      <p>{!! str_limit($biz->content, $limit = 150, $end = "...") !!}</p>
+                    </figure>
+                  </li>
+                @endforeach
               </ul>
             </div>
             <div class="single_post_content_right">
               <ul class="spost_nav">
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                  </div>
-                </li>
+                @foreach ($business as $biz)
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="/viewblog/{{$biz->slug}}" class="media-left"> <img alt="" src="featured/{{$biz->featured_img}}"> </a>
+                      <div class="media-body"> <a href="/viewblog/{{$biz->slug}}" class="catg_title">{!! str_limit($biz->content, $limit = 150, $end = "...") !!}</a> </div>
+                    </div>
+                  </li>
+                @endforeach
               </ul>
             </div>
           </div>
@@ -175,40 +164,29 @@
               <div class="single_post_content">
                 <h2><span>Fashion</span></h2>
                 <ul class="business_catgnav wow fadeInDown">
-                  <li>
-                    <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="images/featured_img2.jpg"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                      <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                    </figure>
-                  </li>
+                  @foreach ($fashion as $fash)
+                    <li>
+                      <figure class="bsbig_fig"> <a href="/viewblog/{{$fash->slug}}" class="featured_img"> <img alt="" src="/featured/{{$fash->featured_img}}"> <span class="overlay"></span> </a>
+                        <figcaption> <a href="/viewblog/{{$fash->slug}}">{{$fash->title}}</a> </figcaption>
+                        <p>{!! str_limit($biz->content, $limit = 150, $end = "...") !!}</p>
+                      </figure>
+                    </li>
+                  @endforeach
                 </ul>
                 <ul class="spost_nav">
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                    </div>
-                  </li>
+                  @foreach ($cultural as $cult)
+                    <li>
+                      <div class="media wow fadeInDown"> <a href="/viewblog/{{$cult->slug}}" class="media-left"> <img alt="" src="/featured/{{$cult->featured_img}}"> </a>
+                        <div class="media-body"> <a href="/viewblog/{{$cult->slug}}" class="catg_title">{{$cult->title}}</a> </div>
+                      </div>
+                    </li>
+                  @endforeach
                 </ul>
               </div>
             </div>
             <div class="technology">
               <div class="single_post_content">
-                <h2><span>Technology</span></h2>
+                <h2><span>Cultural</span></h2>
                 <ul class="business_catgnav">
                   <li>
                     <figure class="bsbig_fig wow fadeInDown"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="images/featured_img3.jpg"> <span class="overlay"></span> </a>

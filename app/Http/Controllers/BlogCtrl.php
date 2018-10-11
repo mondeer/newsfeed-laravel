@@ -40,13 +40,15 @@ class BlogCtrl extends Controller
   }
 
   public function show() {
-  $blogs = Blog::all();
+    $blogs = Blog::all();
 
-  $politics = Blog::where('category', 'political')->get();
-  $business = Blog::where('category', 'business')->get();
-  $sports = Blog::where('category', 'sports')->get();
+    $politics = Blog::where('category', 'political')->get();
+    $business = Blog::where('category', 'business')->get();
+    $sports = Blog::where('category', 'sports')->get();
+    $cultural = Blog::where('category', 'cultural')->get();
+    $fashion = Blog::where('category', 'fashion')->get();
 
-  return view('home', compact('blogs', 'politics', 'business', 'sports'));
+    return view('home', compact('blogs', 'politics', 'business', 'sports', 'cultural', 'fashion'));
   }
 
   public function showblog($slug='') {
