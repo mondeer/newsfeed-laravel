@@ -37,39 +37,10 @@
           <div class="header_top_right">
             <p>Today: {{ Carbon\Carbon::now()->format('l j F Y')}}</p>
           </div>
-          <div id="example">
-
-          </div>
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
-          <!-- Button trigger modal -->
-          <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            Launch demo modal
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                  <div style="text-align: left;">
-                    <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true"
-                    style="width:1000px; height:500px;" frameborder="0"></iframe>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="logo_area"><a href="index.html" class="logo"><img src="images/logo.jpg" alt=""></a></div>
           <div class="add_banner"><a href="#"><img src="images/banner.png" alt=""></a></div>
         </div>
@@ -87,9 +58,6 @@
           <li><a href="#">Breaking News</a></li>
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Politics</a>
             <ul class="dropdown-menu" role="menu">
-              @foreach ($blogs as $blog)
-                <li><a href="#">{{$blog->category}}</a></li>
-              @endforeach
               <li><a href="#">South Sudan</a></li>
               <li><a href="#">East Africa</a></li>
               <li><a href="#">International</a></li>
@@ -131,16 +99,14 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
-
-          @foreach ($blogs->slice(0,3) as $blog)
-            <div class="single_iteam"> <a href="#"> <img src="/featured/{{ $blog->featured_img }}" alt="images/bg.jpg"></a>
+          @foreach ($blogs as $blog)
+            <div class="single_iteam"> <a href="/viewblog/{{ $blog->slug }}"> <img src="/featured/{{ $blog->featured_img }}"></a>
               <div class="slider_article">
-                <h2><a class="slider_tittle" href="/viewblog/{{$blog->slug}}">{{ $blog->title }}</a></h2>
-                <p>{!! str_limit($blog->content, $limit = 350, $end = "...") !!}</p>
+                <h2><a class="slider_tittle" href="/viewblog/{{ $blog->slug }}">{{ $blog->title }}</a></h2>
+                <p>{!! str_limit($blog->content, $limit = 150, $end = "...") !!}</p>
               </div>
             </div>
           @endforeach
-
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
@@ -151,12 +117,11 @@
             <ul class="latest_postnav">
               @foreach ($blogs as $blog)
                 <li>
-                  <div class="media"> <a href="/viewblog/{{ $blog->slug }}" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="/viewblog/{{ $blog->slug }}" class="catg_title"> {{$blog->title }}</a> </div>
+                  <div class="media wow fadeInDown"> <a href="/viewblog/{{$blog->slug}}" class="media-left"> <img width="20%" src="/featured/{{$blog->featured_img}}"> </a>
+                    <div class="media-body"> <a href="/viewblog/{{$blog->slug}}" class="catg_title">{{$blog->title}}</a> </div>
                   </div>
                 </li>
               @endforeach
-
             </ul>
             <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
           </div>

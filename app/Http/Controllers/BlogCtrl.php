@@ -42,7 +42,11 @@ class BlogCtrl extends Controller
   public function show() {
   $blogs = Blog::all();
 
-  return view('home')->with('blogs', $blogs);
+  $politics = Blog::where('category', 'political')->get();
+  $business = Blog::where('category', 'business')->get();
+  $sports = Blog::where('category', 'sports')->get();
+
+  return view('home', compact('blogs', 'politics', 'business', 'sports'));
   }
 
   public function showblog($slug='') {

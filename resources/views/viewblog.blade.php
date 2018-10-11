@@ -9,7 +9,7 @@
       </ol>
       <h1>{{ $blog->title}}</h1>
       <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>{{ $blog->author }}</a> <span><i class="fa fa-calendar"></i>{{$blog->created_at->diffForHumans()}}</span> <a href="#"><i class="fa fa-tags"></i>{{ $blog->category }}</a> </div>
-      <div class="single_page_content"> <img class="img-center" src="../images/bg.jpg" alt="">
+      <div class="single_page_content"> <img class="img-center" style="overflow: auto;" src="/featured/{{ $blog->featured_img }}" alt="">
         <p>{!!$blog->content!!}</p>
       </div>
       <div class="social_link">
@@ -26,7 +26,7 @@
         <ul class="spost_nav wow fadeInDown animated">
           @foreach ($blogs as $related)
             <li>
-              <div class="media"> <a class="media-left" href="single_page.html"> <img src="../images/bg.jpg" alt=""> </a>
+              <div class="media"> <a class="media-left" href="single_page.html"> <img src="/featured/{{ $related->featured_img }}" alt=""> </a>
                 <div class="media-body"> <a class="catg_title" href="single_page.html">{{ $related->title }}</a> </div>
               </div>
             </li>

@@ -15,6 +15,7 @@
       <div class="form-group">
         <label class="text-success">NewsFeed Category</label>
         <select class="control-label" name="category">
+          <option value="political">Political News</option>
           <option value="local">Local News</option>
           <option value="africa">African News</option>
           <option value="international">International News</option>
